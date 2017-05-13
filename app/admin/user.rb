@@ -1,4 +1,7 @@
 ActiveAdmin.register User do
+  menu priority: 3
+  
+  config.batch_actions = true
   
   permit_params :id, :first_name, :last_name, :email,
                 user_roles_attributes: [:id, :role_id, :_destroy],
