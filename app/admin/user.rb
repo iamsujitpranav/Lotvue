@@ -1,6 +1,8 @@
 ActiveAdmin.register User do
   
-  permit_params :id, :first_name, :last_name, :email, user_roles_attributes: [:id, [:role_id], :_destroy], user_images_attributes: [:id, :image, :_destroy]
+  permit_params :id, :first_name, :last_name, :email,
+                user_roles_attributes: [:id, :role_id, :_destroy],
+                user_images_attributes: [:id, :image, :_destroy]
   
   index do
     column "Images" do |user|
@@ -39,7 +41,7 @@ ActiveAdmin.register User do
     f.inputs
     f.inputs "Roles" do
       f.has_many :user_roles do |s|
-        s.input :role_id, as: :select, collection: Role.active, input_html:  { :multiple => true }
+        s.input :role_id, as: :select, collection: Role.active
       end
     end
     f.inputs "Images" do
